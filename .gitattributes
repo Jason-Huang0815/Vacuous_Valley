@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+*.cpp linguist-language=C++
+*.cxx linguist-language=C++
+*.cc linguist-language=C++
+*.h linguist-language=C++
+*.hpp linguist-language=C++
+*.c linguist-language=C++
+
+raylib-6.0/* linguist-vendored
+=======
+*.c linguist-language=C++
+>>>>>>> d80042d0e74614b43c8ed704b834f290b9d6258d
