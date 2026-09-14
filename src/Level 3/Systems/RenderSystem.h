@@ -17,10 +17,15 @@ class GameState;
 class RenderSystem {
 private:
     GameState &m_state;
+
+    void _drawPerson() const;
+
+    void _drawFence() const;
+
 public:
     explicit RenderSystem(GameState &state);
 
-    void render();
+    void render() const;
 };
 
 

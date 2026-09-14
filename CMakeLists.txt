@@ -22,7 +22,6 @@ add_executable(VacuousValley "src/main.cpp"
 
         "src/Level 3/Level_3.cpp"
         "src/Level 3/Level_3.h"
-        "src/Level 3/Core/GameState.cpp"
         "src/Level 3/Core/GameState.h"
         "src/Level 3/Core/GameRules.cpp"
         "src/Level 3/Core/GameRules.h"
