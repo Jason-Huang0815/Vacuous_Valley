@@ -7,6 +7,7 @@
 
 #ifndef VACUOUSVALLEY_INPUTSYSTEM_H
 #define VACUOUSVALLEY_INPUTSYSTEM_H
+#include<raylib.h>
 
 #pragma once
 
@@ -19,7 +20,7 @@ private:
 public:
     explicit InputSystem(GameState &state);
 
-    void update();
+    void update() const;
 };
 
 

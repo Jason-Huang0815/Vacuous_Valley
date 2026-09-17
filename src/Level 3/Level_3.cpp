@@ -18,6 +18,8 @@ Level_3::~Level_3() {
 }
 
 void Level_3::run() const {
+    m_state->initCamera();
+    m_state->initFence();
     while (!WindowShouldClose()) {
         const float dt = GetFrameTime();
         _update(dt);
@@ -33,6 +35,15 @@ void Level_3::_update(const float deltaTime) const {
 void Level_3::_render() const {
     BeginDrawing();
     ClearBackground(GRAY);
+    BeginMode2D(m_state->camera);
     m_renderer->render();
+    EndMode2D();
     EndDrawing();
 }
+
+/* TODO:
+ * initiate house
+ * draw house
+ * house interact UI
+ * interact
+ */

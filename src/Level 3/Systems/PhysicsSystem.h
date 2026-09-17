@@ -17,10 +17,12 @@ class PhysicsSystem {
 private:
     GameState &m_state;
 
+    void _checkFecnceCollision() const;
+
 public:
     explicit PhysicsSystem(GameState &state);
 
-    void update(float dt);
+    void update(float dt) const;
 };
 
 
