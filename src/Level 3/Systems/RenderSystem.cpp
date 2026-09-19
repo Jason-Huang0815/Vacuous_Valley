@@ -9,13 +9,13 @@ void RenderSystem::render() const {
     m_state.camera.target={.x = m_state.player.positionX, .y = m_state.player.positionY};
     _drawPerson();
     _drawFence();
-    DrawRectangle(50,50,50,50,RED);
+    DrawRectangle(50,50,50,50,{110,20,20,255});
 }
 
 void RenderSystem::_drawPerson() const {
     DrawRectangle(m_state.player.positionX - m_state.player.width / 2,
                   m_state.player.positionY - m_state.player.height / 2,
-                  m_state.player.width, m_state.player.height,WHITE);
+                  m_state.player.width, m_state.player.height,DARKGRAY);
 }
 
 void RenderSystem::_drawFence() const {

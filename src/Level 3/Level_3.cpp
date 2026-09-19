@@ -34,7 +34,7 @@ void Level_3::_update(const float deltaTime) const {
 
 void Level_3::_render() const {
     BeginDrawing();
-    ClearBackground(GRAY);
+    ClearBackground({.r = 20, .g = 20, .b = 20, .a = 255});
     BeginMode2D(m_state->camera);
     m_renderer->render();
     EndMode2D();
@@ -42,8 +42,8 @@ void Level_3::_render() const {
 }
 
 /* TODO:
- * initiate house
  * draw house
  * house interact UI
  * interact
+ * draw blood
  */

@@ -37,6 +37,7 @@ add_executable(VacuousValley "src/main.cpp"
         "src/Level 3/Managers/SceneManager.h"
         "src/Level 3/Managers/ResourceManager.cpp"
         "src/Level 3/Managers/ResourceManager.h"
+        utils/Random.h
 )
 target_include_directories(VacuousValley PRIVATE
         ${CMAKE_SOURCE_DIR}/raylib-6.0/include

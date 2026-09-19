@@ -22,7 +22,7 @@
 int main() {
     InitWindow(WIDTH,HEIGHT, "Vacuous Valley");
     SetTargetFPS(60);
-    /*while (true) {
+    while (true) {
         Core level1;
         if (!level1.Run())
             break;
@@ -30,7 +30,8 @@ int main() {
             continue;
         }
         level1.Reset();
-    }*/
+        break;
+    }
     const Level_3 level3;
     level3.run();
     CloseWindow();
