@@ -18,8 +18,7 @@ Level_3::~Level_3() {
 }
 
 void Level_3::run() const {
-    m_state->initCamera();
-    m_state->initFence();
+    m_state->init();
     while (!WindowShouldClose()) {
         const float dt = GetFrameTime();
         _update(dt);
@@ -42,7 +41,6 @@ void Level_3::_render() const {
 }
 
 /* TODO:
- * draw house
  * house interact UI
  * interact
  * draw blood

@@ -30,8 +30,8 @@ public:
     } screen;
 
     struct World {
-        float width = GetScreenWidth() * 2;
-        float height = GetScreenHeight() * 2;
+        float width = GetScreenWidth() * 10;
+        float height = GetScreenHeight() * 10;
     } world;
 
     struct Player {
@@ -68,7 +68,7 @@ public:
         struct Door {
             float positionX;
             float positionY;
-            int width = 10;
+            int width = 200;
             int height;
             Color color = DARKBROWN;
         } door;
@@ -76,6 +76,12 @@ public:
 
     std::vector<Fence> fences;
     std::vector<House> houses;
+
+    void init() {
+        initCamera();
+        initFence();
+        initHouse();
+    }
 
     void initCamera() {
         camera.target = {.x = player.positionX, .y = player.positionY};
@@ -113,12 +119,13 @@ public:
             house.building.size = random(500, 800);
             house.building.color = house.building.colors[random(0, 2)];
 
-            house.window.size = house.building.size / 10;
+            house.window.size = house.building.size / 5;
             house.window.positionX = house.building.positionX + random(0, house.building.size - house.window.size);
             house.window.positionY = house.building.positionY;
             house.window.color = house.window.colors[random(0, 2)];
 
-            house.door.height = random(0.0f, (float) house.building.size - house.window.size);
+            house.door.height = random((float) house.building.size / 3,
+                                       (float) house.building.size - house.window.size);
             house.door.positionX = house.building.positionX + random(0, house.building.size - house.door.width);
             house.door.positionY = house.building.positionY + house.building.size - house.door.height;
             houses.push_back(house);

@@ -22,6 +22,8 @@ private:
 
     void _drawFence() const;
 
+    void _drawHouse() const;
+
 public:
     explicit RenderSystem(GameState &state);
 
