@@ -17,7 +17,9 @@ class PhysicsSystem {
 private:
     GameState &m_state;
 
-    void _checkFecnceCollision() const;
+    void _checkFenceCollision() const;
+
+    void _checkHouseCollision() const;
 
 public:
     explicit PhysicsSystem(GameState &state);

@@ -53,6 +53,7 @@ public:
             float positionX;
             float positionY;
             int size;
+
             Color colors[3] = {{.r = 139, .g = 0, .b = 0, .a = 255},BROWN,GRAY};
             Color color;
         } building;
@@ -61,6 +62,7 @@ public:
             float positionX;
             float positionY;
             int size;
+
             Color colors[3] = {DARKBLUE,LIGHTGRAY,MAROON};
             Color color;
         } window;
@@ -94,6 +96,7 @@ public:
         Fence fence;
         const float halfX = world.width / 2.0f;
         const float halfY = world.height / 2.0f;
+
         for (float x = -halfX; x <= halfX; x += fence.radius * 2) {
             fence.positionX = x;
             fence.positionY = halfY;
@@ -101,6 +104,7 @@ public:
             fence.positionY = -halfY;
             fences.push_back(fence);
         }
+
         for (float y = -halfY; y <= halfY; y += fence.radius * 2) {
             fence.positionX = halfX;
             fence.positionY = y;
@@ -112,11 +116,12 @@ public:
 
     void initHouse(const int quantity = 50) {
         houses.reserve(quantity);
+
         for (int i = 0; i < quantity; i++) {
             House house;
-            house.building.positionX = random(-world.width / 2.0f, world.width / 2.0f);
-            house.building.positionY = random(-world.height / 2.0f, world.height / 2.0f);
             house.building.size = random(500, 800);
+            house.building.positionX = random(-world.width / 2.0f, world.width / 2.0f - house.building.size);
+            house.building.positionY = random(-world.height / 2.0f, world.height / 2.0f - house.building.size);
             house.building.color = house.building.colors[random(0, 2)];
 
             house.window.size = house.building.size / 5;
