@@ -7,7 +7,11 @@
 
 #ifndef VACUOUSVALLEY_GAMESTATE_H
 #define VACUOUSVALLEY_GAMESTATE_H
+#include <iostream>
 #include <vector>
+#include<raylib.h>
+#include <stack>
+
 #include"../../utils/Random.h"
 
 enum class Scene {
@@ -15,13 +19,13 @@ enum class Scene {
 };
 
 enum class State {
-    LOOKING_FOR, FOUND_KEY, ENTRE_HOUSE
+    OUTSIDE, NEAR_DOOR, ENTRE_HOUSE, FOUND_KEY, FOUND_NOTE
 };
 
 class GameState {
 public:
     Scene scene = Scene::VILLAGE;
-    State state = State::LOOKING_FOR;
+    std::stack<State> states;
     Camera2D camera;
 
     struct Screen {
@@ -74,15 +78,30 @@ public:
             int height;
             Color color = DARKBROWN;
         } door;
+
+        struct Lock {
+            bool canOpen;
+            Vector2 UIPosition;
+        } lock;
     };
+
+    struct BloodDrop {
+        Vector2 position;
+        float radiusX;
+        float radiusY;
+        Color color;
+    } bloodDrop;
 
     std::vector<Fence> fences;
     std::vector<House> houses;
+    std::vector<BloodDrop> bloodDrops;
 
     void init() {
+        states.push(State::OUTSIDE);
         initCamera();
         initFence();
         initHouse();
+        initBlood();
     }
 
     void initCamera() {
@@ -119,6 +138,7 @@ public:
 
         for (int i = 0; i < quantity; i++) {
             House house;
+
             house.building.size = random(500, 800);
             house.building.positionX = random(-world.width / 2.0f, world.width / 2.0f - house.building.size);
             house.building.positionY = random(-world.height / 2.0f, world.height / 2.0f - house.building.size);
@@ -134,6 +154,32 @@ public:
             house.door.positionX = house.building.positionX + random(0, house.building.size - house.door.width);
             house.door.positionY = house.building.positionY + house.building.size - house.door.height;
             houses.push_back(house);
+
+            if (i < quantity / 2) {
+                house.lock.canOpen = true;
+            } else {
+                house.lock.canOpen = false;
+            }
+            house.lock.UIPosition = {.x = player.positionX - 40, .y = player.positionY};
+        }
+    }
+
+    void initBlood() {
+        bloodDrops.clear();
+
+        for (int i = 0; i < 1000; i++) {
+            BloodDrop drop;
+
+            drop.position = {
+                .x = random((float) -0.5 * world.width, (float) 0.5 * world.width),
+                .y = random((float) -0.5 * world.height, (float) 0.5 * world.height)
+            };
+            const float radius = random(50, 100);
+            drop.radiusX = radius;
+            drop.radiusY = radius * 0.5f;
+            drop.color = {.r = (unsigned char) random(80, 130), .g = 0, .b = 0, .a = 150};
+
+            bloodDrops.push_back(drop);
         }
     }
 };

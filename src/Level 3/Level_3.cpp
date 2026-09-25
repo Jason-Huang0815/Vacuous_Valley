@@ -3,6 +3,7 @@
 #include "raylib.h"
 
 #include"Core/GameState.h"
+#include"Core/GameRules.h"
 #include"Systems/InputSystem.h"
 #include"Systems/RenderSystem.h"
 #include"Systems/PhysicsSystem.h"
@@ -24,6 +25,8 @@ void Level_3::run() const {
         const float dt = GetFrameTime();
         _update(dt);
         _render();
+
+        GameRules::update(*m_state);
     }
 }
 
@@ -35,15 +38,10 @@ void Level_3::_update(const float deltaTime) const {
 void Level_3::_render() const {
     BeginDrawing();
     ClearBackground({.r = 20, .g = 20, .b = 20, .a = 255});
-    BeginMode2D(m_state->camera);
     m_renderer->render();
-    EndMode2D();
     EndDrawing();
 }
 
 /* TODO:
- * textstring
- * draw blood
- * house interact UI (GameRules+RenderSystem)
  * interact
  */

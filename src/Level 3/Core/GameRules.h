@@ -8,8 +8,17 @@
 #ifndef VACUOUSVALLEY_GAMERULES_H
 #define VACUOUSVALLEY_GAMERULES_H
 
+class GameState;
 
 class GameRules {
+public:
+    static void update(GameState& state);
+
+    static void enterUI(GameState& state);
+
+    static void enterRoom(GameState& state);
+
+    static void exitRoom(GameState& state);
 };
 
 

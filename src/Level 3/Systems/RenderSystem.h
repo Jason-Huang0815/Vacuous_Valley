@@ -18,11 +18,21 @@ class RenderSystem {
 private:
     GameState &m_state;
 
+    void _drawBlood() const;
+
     void _drawPerson() const;
 
     void _drawFence() const;
 
     void _drawHouse() const;
+
+    void _drawHint() const;
+
+    void _drawLock() const;
+
+    void _drawRoom() const;
+
+    void _drawHousePerson() const;
 
 public:
     explicit RenderSystem(GameState &state);
